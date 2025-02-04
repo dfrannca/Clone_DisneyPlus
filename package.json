@@ -3,20 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
   "scripts": {
     "dev": "gulp watch",
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engines": {
-  "node": "22.x"
-},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfrannca/Clone_DisneyPlus.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
