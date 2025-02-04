@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "dev": "gulp watch",
-     "build": "npm run build",
+    "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
