@@ -1,0 +1,218 @@
+@use 'hero';
+@use 'variaveis' as *;
+@use 'shows';
+@use 'plans';
+@use 'available-devices';
+@use 'faq';
+@use 'footer';
+@use 'header';
+
+@font-face {
+    font-family: avenir;
+    src: url("../../assets/fonts/Avenir-Regular.woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: avenir;
+    src: url("../../assets/fonts/Avenir-Bold.woff2");
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: avenir, sans-serif;
+    list-style: none;
+}
+
+body { /* não se aplcia a inputs e botões */
+    background-color: $corDeFundo;
+}
+
+@mixin text($fontSize: 16px) {
+    font-size: $fontSize;
+    line-height: $fontSize + 10px;
+    color: $corTextoPrincipal
+}
+
+@mixin title($fontSize: 40px) {
+    @include text($fontSize);
+    color: $corTextoSecundario;
+}
+
+.text--big {
+    @include text(18px);
+
+    @media (max-width: 768px) {
+        @include text(15px);
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        @include text(16px);
+    }
+}
+
+.text {
+    @include text;
+
+    @media (max-width: 768px) {
+        @include text(14px);
+    }
+}
+
+.text--small {
+    @include text(12px);
+
+    @media (max-width: 768px) {
+        @include text(11px);
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        @include text(12px);
+    }
+}
+
+.text--medium {
+    @include text(16px)
+}
+
+.title--big {
+    @include title(44px);
+
+    @media (max-width: 768px) {
+        @include title(26px);
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        @include title(32px);
+    }
+}
+
+.title {
+    @include title;
+
+    @media (max-width: 768px) {
+        @include title(24px);
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        @include title(32px);
+    }
+}
+
+.title--small  {
+    @include title(28px);
+
+    @media (max-width: 768px) {
+        @include title(22px);
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        @include title(32px);
+    }
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    color: $corTextoSecundario;
+    background-color: $corDeFundoBotaoPrimario;
+    text-transform: uppercase;
+    border-radius: 4px;
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1px;
+    border: 1px solid $corDeFundoBotaoPrimario;
+
+    &:hover {
+        background-color: lighten($corDeFundoBotaoPrimario, 3%);
+    }
+
+    &--secundary {
+        background-color: $corDeFundoBotaoSecundario;
+        border-color: $corDeFundoBotaoSecundario;
+
+        &:hover {
+            background-color: lighten($corDeFundoBotaoSecundario, 3%);
+        }
+    }
+
+    &--dark {
+        background-color: rgba($corDeFundoBotaoDark, 0.8);
+        border-color: $corTextoSecundario;
+
+        &:hover {
+            background-color: $corTextoSecundario;
+            color: $corDeFundo;
+        }
+    }
+}
+
+.link-text {
+    @include text(18px);
+    color: $corTextoSecundario;
+    text-decoration: underline;
+}
+
+.image-text-section {
+    padding: 5.5vw;
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    &__text_container {
+        padding: 0 2vw;
+
+        @media (max-width: 1024px) {
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 24px;
+
+            @media (max-width: 1024px) {
+                padding-top: 20px;
+            }
+        }
+    }
+
+    &--image-full-width {
+        display: block;
+        position: relative;
+
+        img {
+            width: 100%;
+        }
+
+        &__text_container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: calc(50% - 5.6vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            @media (max-width: 768px) {
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+    }
+}
